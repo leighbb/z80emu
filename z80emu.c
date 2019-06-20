@@ -2223,7 +2223,7 @@ emulate_next_instruction:
                                 int     n;
 
                                 READ_N(n);
-                                Z80_INPUT_BYTE(n, A);
+                                Z80_INPUT_BYTE(A<<8|n, A);
 
                                 elapsed_cycles += 4;
 
@@ -2234,7 +2234,7 @@ emulate_next_instruction:
                         case IN_R_C: {
 
                                 int     x;                                           
-                                Z80_INPUT_BYTE(C, x);
+                                Z80_INPUT_BYTE(BC, x);
                                 if (Y(opcode) != INDIRECT_HL) 
 
                                         R(Y(opcode)) = x;
@@ -2258,7 +2258,7 @@ emulate_next_instruction:
 
                                 int     x, f;
 
-                                Z80_INPUT_BYTE(C, x);
+                                Z80_INPUT_BYTE(BC, x);
                                 WRITE_BYTE(HL, x);
 
                                 f = SZYX_FLAGS_TABLE[--B & 0xff]
@@ -2309,7 +2309,7 @@ emulate_next_instruction:
 
                                         r += 2;
                 
-                                        Z80_INPUT_BYTE(C, x);
+                                        Z80_INPUT_BYTE(BC, x);
                                         Z80_WRITE_BYTE(hl, x);
 
                                         hl += d;
