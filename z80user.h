@@ -29,10 +29,9 @@ extern "C" {
  * respectively Z80_READ_WORD() and Z80_WRITE_WORD(), except they are only used
  * for interrupt generation.
  * 
- * Z80_INPUT_BYTE() and Z80_OUTPUT_BYTE() are for input and output. The upper
- * bits of the port number to read or write are always zero. The input byte x 
- * must be an unsigned 8-bit value. The value x to write is an unsigned 8-bit 
- * with its upper bits zeroed.
+ * Z80_INPUT_BYTE() and Z80_OUTPUT_BYTE() are for input and output. The port
+ * number is a 16-bit value. The input byte x must be an unsigned 8-bit value. 
+ * The value x to write is an unsigned 8-bit with its upper bits zeroed.
  *
  * All macros have access to the following three variables:
  *
